@@ -4,31 +4,27 @@ import { ReactComponent as HomeIcon } from "./assets/icons/Home.svg";
 import { ReactComponent as SearchIcon } from "./assets/icons/Search.svg";
 import { ReactComponent as NotificationIcon } from "./assets/icons/Notification.svg";
 import { ReactComponent as DirectMessageIcon } from "./assets/icons/DirectMessage.svg";
-import { ReactComponent as TwitterIcon } from "./assets/icons/Twitter.svg";
-import { ReactComponent as SparkIcon } from "./assets/icons/Spark.svg";
+import Header from "@/components/layouts/Header";
+import Fleet from "@/components/Fleet";
+import FleetItem from "./components/FleetItem";
 
 function App() {
   return (
     <div className="App">
-      <div className="tw-header">
-        <span className="tw-collapse-icon">
-          <div className="tw-avatar sm"></div>
-        </span>
-        <div className="tw-brand">
-          <Icon icon={<TwitterIcon />} />
-        </div>
-        <span className="tw-toggle">
-          <Icon icon={<SparkIcon />} />
-        </span>
-      </div>
-
-      <div className="tw-fleet-items">
-        <div className="tw-avatar tw-fleet-self">
-          <span className="tw-icon tw-plus-icon">+</span>
-        </div>
-        <div className="tw-avatar tw-fleet"></div>
-        <div className="tw-avatar tw-fleet tw-fleet-seen"></div>
-      </div>
+      <Header />
+      <Fleet>
+        <FleetItem isUser={true} />
+        <FleetItem isSeen={true} />
+        <FleetItem />
+        <FleetItem />
+        <FleetItem />
+        <FleetItem />
+        <FleetItem />
+        <FleetItem />
+        <FleetItem />
+        <FleetItem />
+        <FleetItem />
+      </Fleet>
 
       <div className="tw-tweet">
         <div className="tw-tweet-profile">
