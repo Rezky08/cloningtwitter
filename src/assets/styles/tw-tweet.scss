@@ -1,0 +1,45 @@
+.tw-tweet {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem;
+  &-profile {
+    display: flex;
+  }
+  &-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  &-fill-content {
+    text-align: left;
+    & p {
+      margin: 0;
+    }
+  }
+  &-username,
+  &-time-diff,
+  .tw-dot-separator {
+    color: lightslategray;
+  }
+  &-display-name {
+    font-weight: 500;
+  }
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    &--left {
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+    }
+    &--right {
+      display: flex;
+      align-items: center;
+    }
+  }
+  &-footer {
+    display: flex;
+    gap: 1rem;
+  }
+}

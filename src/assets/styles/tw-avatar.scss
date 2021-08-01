@@ -1,0 +1,12 @@
+.tw-avatar {
+  position: relative;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 100%;
+  background-color: gray;
+  border: 2px solid white;
+  &.sm {
+    height: 2rem;
+    width: 2rem;
+  }
+}

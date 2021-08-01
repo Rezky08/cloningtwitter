@@ -1,0 +1,20 @@
+.tw-navigation {
+  &-container {
+    border-top: $hairline;
+    position: fixed;
+    width: 100vw;
+    left: 0;
+    bottom: 0;
+  }
+  &-items {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    color: lightslategray;
+  }
+  &-item {
+    &-active {
+      color: cornflowerblue;
+    }
+  }
+}
