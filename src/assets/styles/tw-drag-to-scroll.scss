@@ -1,0 +1,16 @@
+.tw-drag-to-scroll {
+  cursor: grab;
+  &.active {
+    cursor: grabbing;
+  }
+  overflow-x: scroll;
+  overflow-y: hidden;
+  & {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  &::-webkit-scrollbar {
+    width: 0; /* Remove scrollbar space */
+    height: 0; /* Remove scrollbar space */
+  }
+}

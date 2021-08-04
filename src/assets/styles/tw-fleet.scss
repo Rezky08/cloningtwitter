@@ -1,22 +1,14 @@
 .tw-fleet {
+  cursor: pointer;
   &-container {
     position: relative;
-    height: 4.7rem;
+    height: 4rem;
     width: 100%;
     border-bottom: $hairline;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    & {
-      -ms-overflow-style: none; /* IE and Edge */
-      scrollbar-width: none; /* Firefox */
-    }
-    &::-webkit-scrollbar {
-      width: 0; /* Remove scrollbar space */
-    }
   }
   &-items {
     display: flex;
-    padding: 0.7rem 0.7rem;
+    padding: 0.5rem 0.5rem;
     gap: 0.7rem;
     position: absolute;
   }
@@ -25,7 +17,7 @@
     position: absolute;
     height: 120%;
     width: 120%;
-    background-color: blue;
+    background-color: $primary-dark;
     top: 0;
     left: 0;
     transform: translate(-8.5%, -8%);

@@ -1,1 +1,11 @@
-$hairline: 0.5px solid rgba(gainsboro, 0.3);
+:root {
+  --tw-primary: cornflowerblue;
+  --tw-primary-dark: #3676e8;
+  --tw-secondary: gainsboro;
+}
+
+$primary: var(--tw-primary);
+$primary-dark: var(--tw-primary-dark);
+$secondary: var(--tw-secondary);
+
+$hairline: 0.5px solid rgba($secondary, 0.3);

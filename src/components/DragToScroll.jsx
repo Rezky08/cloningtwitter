@@ -4,14 +4,20 @@ class DragToScroll extends React.Component {
   constructor(props) {
     super(props);
     const directions = ["x", "y", "all"];
+    this.dragToScrollContainer = React.createRef();
     this.state = {
       direction: directions.includes(props.direction) ? props.direction : "all",
       directions: directions,
     };
+    this.addDragScrollable = this.addDragScrollable.bind(this);
+  }
+
+  componentDidMount() {
+    this.addDragScrollable();
   }
 
   addDragScrollable() {
-    const slider = document.querySelector(".items");
+    const slider = this.dragToScrollContainer.current;
     let isDown = false;
     let startX;
     let scrollLeft;
@@ -20,6 +26,7 @@ class DragToScroll extends React.Component {
       isDown = true;
       slider.classList.add("active");
       startX = e.pageX - slider.offsetLeft;
+
       scrollLeft = slider.scrollLeft;
     });
     slider.addEventListener("mouseleave", () => {
@@ -36,19 +43,20 @@ class DragToScroll extends React.Component {
       const x = e.pageX - slider.offsetLeft;
       const walk = (x - startX) * 3; //scroll-fast
       slider.scrollLeft = scrollLeft - walk;
-      console.log(walk);
     });
   }
 
   render() {
     return (
-      <div
-        className={[
-          "drag-to-scroll",
-          this.state !== "all" ? `scroll-${this.state.direction}` : null,
-        ]}
-      >
-        {this.props.children}
+      <div>
+        {React.cloneElement(this.props.children, {
+          className: [
+            "tw-drag-to-scroll",
+            this.state !== "all" ? `scroll-${this.state.direction}` : null,
+            this.props.children?.props?.className,
+          ].join(" "),
+          ref: this.dragToScrollContainer,
+        })}
       </div>
     );
   }
