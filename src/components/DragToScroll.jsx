@@ -18,6 +18,7 @@ class DragToScroll extends React.Component {
 
   addDragScrollable() {
     const slider = this.dragToScrollContainer.current;
+
     let isDown = false;
     let startX;
     let scrollLeft;

@@ -7,6 +7,7 @@ import { ReactComponent as DirectMessageIcon } from "./assets/icons/DirectMessag
 import Header from "@/components/layouts/Header";
 import Fleet from "@/components/Fleet";
 import FleetItem from "./components/FleetItem";
+import ComposeButton from "./components/ComposeButton";
 
 function App() {
   return (
@@ -74,6 +75,8 @@ function App() {
           </span>
         </div>
       </div>
+
+      <ComposeButton />
     </div>
   );
 }

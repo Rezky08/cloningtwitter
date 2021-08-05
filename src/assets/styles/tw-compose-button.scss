@@ -1,0 +1,12 @@
+.tw-compose-button {
+  background-color: $primary;
+  color: white;
+  border: none;
+  position: fixed;
+  right: 1rem;
+  bottom: calc(var(--tw-nav-height) * 1.4);
+  &.active,
+  &:hover {
+    background-color: $primary-dark;
+  }
+}
