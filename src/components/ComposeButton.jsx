@@ -1,5 +1,7 @@
 import React from "react";
 import { ReactComponent as ComposeIcon } from "@/assets/icons/Compose.svg";
+import { Link } from "react-router-dom";
+
 import Button from "@/components/Button";
 import Icon from "./Icon";
 
@@ -26,9 +28,11 @@ class ComposeButton extends React.Component {
 
   render() {
     return (
-      <Button className="tw-compose-button" ref={this.ComposeButtonRef}>
-        <Icon icon={<ComposeIcon />} />
-      </Button>
+      <Link to="/compose">
+        <Button className="tw-compose-button" ref={this.ComposeButtonRef}>
+          <Icon icon={<ComposeIcon />} />
+        </Button>
+      </Link>
     );
   }
 }

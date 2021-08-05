@@ -1,3 +1,12 @@
+@keyframes pulldown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .tw-header {
   display: flex;
   justify-content: space-between;
@@ -5,4 +14,20 @@
   border-bottom: $hairline;
   padding: 0.3rem;
   color: cornflowerblue;
+
+  &-container {
+    background-color: white;
+    &.sticky {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      transition: 0.3s all;
+    }
+    &.sticky-up {
+      position: sticky;
+      top: -100%;
+      z-index: 2;
+      transition: 0.3s all;
+    }
+  }
 }
