@@ -1,0 +1,15 @@
+[contenteditable][placeholder]:empty:before {
+  content: attr(placeholder);
+  position: absolute;
+  color: $secondary;
+  background-color: transparent;
+}
+
+.tw-textarea {
+  border: none;
+  width: 100%;
+  min-height: 100%;
+  height: auto;
+  outline: none;
+  text-align: left;
+}

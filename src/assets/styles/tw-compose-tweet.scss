@@ -1,0 +1,41 @@
+.tw-compose-tweet {
+  width: 100vw;
+  color: $primary;
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.7rem;
+    border-bottom: $hairline;
+  }
+  &-button {
+    &--submit {
+      padding: 0.5rem 1rem;
+      font-weight: 800;
+    }
+  }
+  &-fill-content {
+    padding: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    &--profile {
+      width: auto;
+    }
+    &--content {
+      &-textarea {
+        color: black;
+        font-size: larger;
+        padding: 0.5rem 0;
+      }
+      &-permission {
+        display: flex;
+        gap: 0.5rem;
+        border-bottom: $hairline;
+      }
+      &-options {
+        display: flex;
+        gap: 1rem;
+      }
+      width: 80%;
+    }
+  }
+}

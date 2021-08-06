@@ -29,7 +29,11 @@ class ComposeButton extends React.Component {
   render() {
     return (
       <Link to="/compose">
-        <Button className="tw-compose-button" ref={this.ComposeButtonRef}>
+        <Button
+          circle
+          className="tw-compose-button"
+          ref={this.ComposeButtonRef}
+        >
           <Icon icon={<ComposeIcon />} />
         </Button>
       </Link>

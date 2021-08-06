@@ -1,5 +1,12 @@
 .tw-button {
   cursor: pointer;
+  background-color: $primary;
+  color: white;
+  border: 0;
+  padding: 0.5rem;
+  &-pill {
+    border-radius: 10rem;
+  }
   &-circle {
     display: flex;
     justify-content: center;
