@@ -4,8 +4,8 @@ import { ReactComponent as TwitterIcon } from "@/assets/icons/Twitter.svg";
 import { ReactComponent as SparkIcon } from "@/assets/icons/Spark.svg";
 import Avatar from "@/components/Avatar";
 
-import Fleet from "@/components/Fleet";
-import FleetItem from "@/components/FleetItem";
+// import Fleet from "@/components/Fleet";
+// import FleetItem from "@/components/FleetItem";
 
 class Header extends React.Component {
   constructor(props) {
