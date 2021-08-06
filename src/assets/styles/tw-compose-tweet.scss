@@ -21,6 +21,9 @@
       width: auto;
     }
     &--content {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
       &-textarea {
         color: black;
         font-size: larger;
@@ -29,13 +32,11 @@
       &-permission {
         display: flex;
         gap: 0.5rem;
-        border-bottom: $hairline;
       }
       &-options {
         display: flex;
         gap: 1rem;
       }
-      width: 80%;
     }
   }
 }

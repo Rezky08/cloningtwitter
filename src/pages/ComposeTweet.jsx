@@ -50,17 +50,19 @@ class ComposeTweet extends React.Component {
               className="tw-compose-tweet-fill-content--content-textarea"
               onChange={this.onTweetChange}
             />
-            <div className="tw-compose-tweet-fill-content--content-permission">
-              <Icon icon={<WorldIcon />} size="1rem" />
-              <span>{this.state.replyPermission} can Reply</span>
-            </div>
-            <Hairline />
-            <div className="tw-compose-tweet-fill-content--content-options">
-              <Icon icon={<GifIcon />} />
-              <Icon icon={<ImageIcon />} />
-              <Icon icon={<PollIcon />} />
-              <Icon icon={<StickerIcon />} />
-              <Icon icon={<ScheduleIcon />} />
+            <div className="tw-compose-tweet-fill-content--content-settings">
+              <div className="tw-compose-tweet-fill-content--content-permission">
+                <Icon icon={<WorldIcon />} size="1rem" />
+                <span>{this.state.replyPermission} can Reply</span>
+              </div>
+              <Hairline />
+              <div className="tw-compose-tweet-fill-content--content-options">
+                <Icon icon={<GifIcon />} />
+                <Icon icon={<ImageIcon />} />
+                <Icon icon={<PollIcon />} />
+                <Icon icon={<StickerIcon />} />
+                <Icon icon={<ScheduleIcon />} />
+              </div>
             </div>
           </div>
         </div>
