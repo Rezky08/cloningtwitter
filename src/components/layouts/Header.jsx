@@ -21,11 +21,11 @@ class Header extends React.Component {
     let lastPosition = document.documentElement.scrollTop;
     document.addEventListener("scroll", (e) => {
       if (lastPosition > document.documentElement.scrollTop) {
-        this.headerRef.current.classList.remove("sticky-up");
-        this.headerRef.current.classList.add("sticky");
+        this.headerRef.current?.classList.remove("sticky-up");
+        this.headerRef.current?.classList.add("sticky");
       } else {
-        this.headerRef.current.classList.remove("sticky");
-        this.headerRef.current.classList.add("sticky-up");
+        this.headerRef.current?.classList.remove("sticky");
+        this.headerRef.current?.classList.add("sticky-up");
       }
       lastPosition = document.documentElement.scrollTop;
     });
