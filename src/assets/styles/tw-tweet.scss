@@ -46,6 +46,10 @@
       display: flex;
       gap: 0.5rem;
       align-items: center;
+      color: $secondary-dark;
+      &--count {
+        font-size: small;
+      }
     }
   }
 }

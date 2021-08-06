@@ -3,7 +3,7 @@ import React from "react";
 import { ReactComponent as CommentIcon } from "@/assets/icons/Comment.svg";
 import { ReactComponent as RetweetIcon } from "@/assets/icons/Retweet.svg";
 import { ReactComponent as LikeIcon } from "@/assets/icons/Like.svg";
-import { ReactComponent as ShareIcon } from "@/assets/icons/Share.svg";
+import { ReactComponent as ShareIcon } from "@/assets/icons/Share2.svg";
 import Icon from "@/components/Icon";
 
 class TweetFooter extends React.Component {
@@ -17,16 +17,16 @@ class TweetFooter extends React.Component {
     return (
       <div className="tw-tweet-footer">
         <div className="tw-tweet-footer-item">
-          <span className="tw-tweet-footer-item--count">12</span>
           <Icon icon={<CommentIcon />} size={this.state.iconSize} />
+          <span className="tw-tweet-footer-item--count">12</span>
         </div>
         <div className="tw-tweet-footer-item">
-          <span className="tw-tweet-footer-item--count">12</span>
           <Icon icon={<RetweetIcon />} size={this.state.iconSize} />
+          <span className="tw-tweet-footer-item--count">12</span>
         </div>
         <div className="tw-tweet-footer-item">
-          <span className="tw-tweet-footer-item--count">12</span>
           <Icon icon={<LikeIcon />} size={this.state.iconSize} />
+          <span className="tw-tweet-footer-item--count">12</span>
         </div>
         <div className="tw-tweet-footer-item">
           <Icon icon={<ShareIcon />} size={this.state.iconSize} />

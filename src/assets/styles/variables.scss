@@ -2,11 +2,13 @@
   --tw-primary: cornflowerblue;
   --tw-primary-dark: #3676e8;
   --tw-secondary: gainsboro;
+  --tw-secondary-dark: lightslategrey;
   --tw-nav-height: 3rem;
 }
 
 $primary: var(--tw-primary);
 $primary-dark: var(--tw-primary-dark);
 $secondary: var(--tw-secondary);
+$secondary-dark: var(--tw-secondary-dark);
 
 $hairline: 0.5px solid rgba(gainsboro, 0.3);
