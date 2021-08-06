@@ -45,7 +45,7 @@ class Header extends React.Component {
             <Icon icon={<SparkIcon />} />
           </span>
         </div>
-        <Fleet>
+        {/* <Fleet>
           <FleetItem isUser={true} />
           <FleetItem isSeen={true} />
           <FleetItem />
@@ -57,7 +57,7 @@ class Header extends React.Component {
           <FleetItem />
           <FleetItem />
           <FleetItem />
-        </Fleet>
+        </Fleet> */}
       </div>
     );
   }
