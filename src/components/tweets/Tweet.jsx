@@ -2,8 +2,15 @@ import React from "react";
 import Avatar from "@/components/Avatar";
 
 import TweetFooter from "./TweetFooter";
+import moment from "moment";
 
 class Tweet extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      timeDiff: moment(this.props.created_at).fromNow(true),
+    };
+  }
   render() {
     return (
       <div className="tw-tweet">
@@ -13,21 +20,21 @@ class Tweet extends React.Component {
         <div className="tw-tweet-content">
           <div className="tw-tweet-header">
             <div className="tw-tweet-header--left">
-              <span className="tw-tweet-display-name">Username</span>
-              <span className="tw-tweet-username">@username</span>
-              <span className="tw-dot-separator">.</span>
-              <div className="tw-tweet-time-diff">20h</div>
+              <span className="tw-tweet-display-name">
+                {this.props.user?.username}
+              </span>
+              <span className="tw-tweet-username">
+                @{this.props.user?.username}
+              </span>
+              <span className="tw-dot-separator">·</span>
+              <div className="tw-tweet-time-diff">{this.state.timeDiff}</div>
             </div>
-            <div className="tw-tweet-header--right"> ... </div>
+            <div className="tw-tweet-header--right">
+              <span>...</span>
+            </div>
           </div>
           <div className="tw-tweet-fill-content">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-              ante libero, blandit quis tortor a, pellentesque efficitur urna.
-              Pellentesque ultricies molestie diam, quis rhoncus massa pulvinar
-              accumsan. Nunc tincidunt nisi diam, consectetur pretium nisl
-              interdum at. Praesent vestibulum urna odio,
-            </p>
+            <p>{this.props.text}</p>
           </div>
           <TweetFooter />
         </div>

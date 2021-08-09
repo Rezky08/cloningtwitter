@@ -3,30 +3,58 @@ import Icon from "@/components/Icon";
 import Button from "@/components/Button";
 import Avatar from "@/components/Avatar";
 import { ReactComponent as ArrowLeftIcon } from "@/assets/icons/ArrowLeft.svg";
-import { ReactComponent as WorldIcon } from "@/assets/icons/World.svg";
-import { ReactComponent as GifIcon } from "@/assets/icons/Gif.svg";
-import { ReactComponent as ImageIcon } from "@/assets/icons/Image.svg";
-import { ReactComponent as PollIcon } from "@/assets/icons/Poll.svg";
-import { ReactComponent as ScheduleIcon } from "@/assets/icons/Schedule.svg";
-import { ReactComponent as StickerIcon } from "@/assets/icons/Sticker.svg";
 import Textarea from "@/components/Textarea";
-import Hairline from "@/components/Hairline";
 import { Link } from "react-router-dom";
+import ComposeTweetSetting from "@/components/compose_tweets/ComposeTweetSetting";
+import API from "@/functions/apis";
 
 class ComposeTweet extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      tweet: null,
-      replyPermission: "Everyone",
+      text: null,
+      submit: false,
+    };
+    this.validation = {
+      text: {
+        max: 200,
+      },
     };
 
     this.onTweetChange = this.onTweetChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
-  onTweetChange(tweet) {
-    this.setState({
-      tweet: tweet ?? this.state.tweet,
+  tweetValidation() {
+    if (
+      this.state.text?.length <= this.validation.text.max &&
+      this.state.text?.length !== 0
+    ) {
+      if (!this.state.submit) {
+        this.setState({
+          submit: true,
+        });
+      }
+    } else {
+      if (this.state.submit) {
+        this.setState({
+          submit: false,
+        });
+      }
+    }
+  }
+  onTweetChange(text) {
+    this.setState(
+      {
+        text: text ?? this.state.text,
+      },
+      () => this.tweetValidation()
+    );
+  }
+  onSubmit() {
+    console.log(this.state);
+    API.post("/tweet", this.state).then(({ data }) => {
+      console.log(data);
     });
   }
   render() {
@@ -36,7 +64,12 @@ class ComposeTweet extends React.Component {
           <Link to="/">
             <Icon icon={<ArrowLeftIcon />} size="1.4rem" />
           </Link>
-          <Button pill className="tw-compose-tweet-button--submit">
+          <Button
+            pill
+            disabled={!this.state.submit}
+            className="tw-compose-tweet-button--submit"
+            onClick={this.onSubmit}
+          >
             <span>Tweet</span>
           </Button>
         </div>
@@ -50,20 +83,7 @@ class ComposeTweet extends React.Component {
               className="tw-compose-tweet-fill-content--content-textarea"
               onChange={this.onTweetChange}
             />
-            <div className="tw-compose-tweet-fill-content--content-settings">
-              <div className="tw-compose-tweet-fill-content--content-permission">
-                <Icon icon={<WorldIcon />} size="1rem" />
-                <span>{this.state.replyPermission} can Reply</span>
-              </div>
-              <Hairline />
-              <div className="tw-compose-tweet-fill-content--content-options">
-                <Icon icon={<GifIcon />} />
-                <Icon icon={<ImageIcon />} />
-                <Icon icon={<PollIcon />} />
-                <Icon icon={<StickerIcon />} />
-                <Icon icon={<ScheduleIcon />} />
-              </div>
-            </div>
+            <ComposeTweetSetting />
           </div>
         </div>
       </div>

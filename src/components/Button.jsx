@@ -7,10 +7,26 @@ class Button extends React.Component {
     this.addClassName = this.addClassName.bind(this);
     this.addCircleClass = this.addCircleClass.bind(this);
     this.addPillClass = this.addPillClass.bind(this);
+    this.setDisabledAttribute = this.setDisabledAttribute.bind(this);
+    this.onClicked = this.onClicked.bind(this);
+    this.addSizeClass = this.addSizeClass.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    this.setDisabledAttribute();
   }
 
   componentDidMount() {
     this.addClassName();
+    this.setDisabledAttribute();
+  }
+
+  setDisabledAttribute() {
+    if (this.props.disabled) {
+      this.ButtonRef.current?.setAttribute("disabled", this.props.disabled);
+    } else {
+      this.ButtonRef.current?.removeAttribute("disabled");
+    }
   }
 
   addClassName() {
@@ -19,11 +35,18 @@ class Button extends React.Component {
     }
     this.addCircleClass();
     this.addPillClass();
+    this.addSizeClass();
   }
 
   addPillClass() {
     if (this.props.pill) {
       this.ButtonRef.current.classList.add("tw-button-pill");
+    }
+  }
+
+  addSizeClass() {
+    if (this.props.size) {
+      this.ButtonRef.current.classList.add(this.props.size);
     }
   }
 
@@ -33,12 +56,26 @@ class Button extends React.Component {
     }
   }
 
+  onClicked() {
+    if (!this.ButtonRef.current.getAttribute("disabled")) {
+      this.props.onClick();
+    }
+  }
+
   render() {
     return (
-      <button ref={this.ButtonRef} className="tw-button">
+      <button
+        ref={this.ButtonRef}
+        className="tw-button"
+        onClick={this.onClicked}
+      >
         {this.props.children}
       </button>
     );
   }
 }
+
+Button.defaultProps = {
+  onClick: () => {},
+};
 export default Button;
