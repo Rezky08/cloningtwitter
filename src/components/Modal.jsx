@@ -3,15 +3,60 @@ import React from "react";
 class Modal extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      visible: this.props.visible ?? false,
+    };
+
     this.modalRef = React.createRef();
     this.hide = this.hide.bind(this);
     this.show = this.show.bind(this);
+    this.triggeredModal = this.triggeredModal.bind(this);
+    this.updateVisible = this.updateVisible.bind(this);
+    this.setClass = this.setClass.bind(this);
   }
+  componentDidUpdate(prevProp, prevState) {
+    if (prevProp.visible !== this.props.visible) {
+      this.updateVisible(this.props.visible);
+    }
+    if (prevState.visible !== this.state.visible) {
+      this.props.onChange(this.state.visible);
+    }
+    this.triggeredModal();
+  }
+  componentDidMount() {
+    this.updateVisible(this.props.visible);
+    this.triggeredModal();
+  }
+
+  updateVisible(value) {
+    if (value) {
+      this.show();
+    } else {
+      this.hide();
+    }
+  }
+
+  triggeredModal() {
+    this.setClass();
+  }
+
+  setClass() {
+    if (this.state.visible) {
+      this.modalRef.current.classList.add("active");
+    } else {
+      this.modalRef.current.classList.remove("active");
+    }
+  }
+
   show() {
-    this.modalRef.current.classList.add("active");
+    this.setState({
+      visible: true,
+    });
   }
   hide() {
-    this.modalRef.current.classList.remove("active");
+    this.setState({
+      visible: false,
+    });
   }
   render() {
     return (
@@ -34,5 +79,9 @@ class Modal extends React.Component {
     );
   }
 }
+
+Modal.defaultProps = {
+  onChange: () => {},
+};
 
 export default Modal;

@@ -1,0 +1,39 @@
+.tw-tweet-modal-visibility {
+  &--body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &--cancel {
+    background-color: $secondary;
+    color: black;
+    font-weight: 700;
+    width: 100%;
+  }
+  &--header {
+    display: flex;
+    flex-direction: column;
+    color: $secondary-dark;
+    padding: 1rem;
+    & .title {
+      color: black;
+      font-weight: 700;
+    }
+  }
+  &--options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    &-item {
+      &:hover {
+        cursor: pointer;
+        background-color: $secondary;
+      }
+      padding: 0.5rem 1rem;
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+    }
+  }
+}

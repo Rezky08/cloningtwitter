@@ -15,6 +15,7 @@ class ComposeTweet extends React.Component {
     this.state = {
       text: null,
       submit: false,
+      replyPermission: null,
     };
     this.validation = {
       text: {
@@ -24,6 +25,7 @@ class ComposeTweet extends React.Component {
 
     this.onTweetChange = this.onTweetChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onTweetSettingChange = this.onTweetSettingChange.bind(this);
   }
   tweetValidation() {
     if (
@@ -51,8 +53,10 @@ class ComposeTweet extends React.Component {
       () => this.tweetValidation()
     );
   }
+  onTweetSettingChange(settings) {
+    this.setState({ ...this.state, ...settings });
+  }
   onSubmit() {
-    console.log(this.state);
     API.post("/tweet", this.state).then(({ data }) => {
       console.log(data);
     });
@@ -83,7 +87,7 @@ class ComposeTweet extends React.Component {
               className="tw-compose-tweet-fill-content--content-textarea"
               onChange={this.onTweetChange}
             />
-            <ComposeTweetSetting />
+            <ComposeTweetSetting onChange={this.onTweetSettingChange} />
           </div>
         </div>
       </div>

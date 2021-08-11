@@ -1,6 +1,7 @@
 .tw-modal {
   &-trigger {
     width: fit-content;
+    cursor: pointer;
   }
   &-cover {
     background-color: $secondary-dark;

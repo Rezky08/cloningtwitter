@@ -6,11 +6,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import moment from "moment";
 
-localStorage.setItem(
-  "authorization",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTBmYjFjY2UwZTM4YzNiZjgwYjQ5NzgiLCJ1c2VybmFtZSI6InJlemt5MDYiLCJpYXQiOjE2Mjg0NzMxNTksImV4cCI6MTYyODQ3Njc1OX0.CA65SPTy4NKqD-9vQm23BxAXEpQAo-PqoVNe3muZoSI"
-);
-
 moment.updateLocale("en", {
   relativeTime: {
     future: "in %s",

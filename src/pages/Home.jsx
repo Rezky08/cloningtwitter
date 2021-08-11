@@ -15,6 +15,11 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
+    localStorage.setItem(
+      "authorization",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTBmYjFjY2UwZTM4YzNiZjgwYjQ5NzgiLCJ1c2VybmFtZSI6InJlemt5MDYiLCJpYXQiOjE2Mjg2NTM1NTIsImV4cCI6MTYyODY1NzE1Mn0.potvzTr0sW6atvhE1Hf_7WY3uGP2EeHBeVO4JZ6K_oc"
+    );
+
     API.get("/tweet").then(({ data }) => {
       this.setState({
         tweets: data?.data,
@@ -30,12 +35,14 @@ class Home extends React.Component {
   // }
   render() {
     return (
-      <div>
+      <div className="tw-home">
         <Header />
 
-        {this.state.tweets.map((value, index) => {
-          return <Tweet key={index} {...value} />;
-        })}
+        <div>
+          {this.state.tweets.map((value, index) => {
+            return <Tweet key={index} {...value} />;
+          })}
+        </div>
 
         <Navigation />
 
