@@ -12,9 +12,19 @@ class Header extends React.Component {
     super(props);
     this.headerRef = React.createRef();
     this.setStickyWhenScrolledDown = this.setStickyWhenScrolledDown.bind(this);
+    this.addClassName = this.addClassName.bind(this);
+    this.state = {
+      isHome: props.isHome ?? false,
+    };
   }
   componentDidMount() {
+    this.addClassName();
     this.setStickyWhenScrolledDown();
+  }
+  addClassName() {
+    if (this.props.className) {
+      this.headerRef.current.classList.add(this.props.className);
+    }
   }
 
   setStickyWhenScrolledDown() {
@@ -32,9 +42,10 @@ class Header extends React.Component {
   }
 
   render() {
-    return (
-      <div className="tw-header-container" ref={this.headerRef}>
-        <div className="tw-header">
+    let header;
+    if (this.state.isHome) {
+      header = (
+        <div className="tw-header home">
           <span className="tw-collapse-icon">
             <Avatar sm />
           </span>
@@ -45,19 +56,27 @@ class Header extends React.Component {
             <Icon icon={<SparkIcon />} />
           </span>
         </div>
-        {/* <Fleet>
-          <FleetItem isUser={true} />
-          <FleetItem isSeen={true} />
-          <FleetItem />
-          <FleetItem />
-          <FleetItem />
-          <FleetItem />
-          <FleetItem />
-          <FleetItem />
-          <FleetItem />
-          <FleetItem />
-          <FleetItem />
-        </Fleet> */}
+      );
+    } else {
+      header = (
+        <div className="tw-header">
+          {this.props.left ? (
+            <div className="tw-header--left">
+              <div className="tw-header--left-action">{this.props.left}</div>
+              <div className="tw-header--left-title">{this.props.title}</div>
+            </div>
+          ) : null}
+          {this.props.children}
+          {this.props.right ? (
+            <div className="tw-header--right">{this.props.right}</div>
+          ) : null}
+        </div>
+      );
+    }
+
+    return (
+      <div className="tw-header-container" ref={this.headerRef}>
+        {header}
       </div>
     );
   }

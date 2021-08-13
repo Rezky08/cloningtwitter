@@ -2,8 +2,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.3rem;
-  color: cornflowerblue;
+  padding: 0.7rem;
+  border-bottom: $hairline;
+  &.home {
+    color: $primary;
+    border-bottom: none;
+  }
+  &--left {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    &-title {
+      font-weight: 500;
+    }
+  }
 
   &-container {
     background-color: white;

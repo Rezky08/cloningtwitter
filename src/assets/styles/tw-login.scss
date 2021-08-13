@@ -1,0 +1,16 @@
+.tw-login {
+  &-header {
+    &.login {
+      padding: $padding-border;
+      color: $primary;
+    }
+  }
+  &-body {
+    padding: $padding-border;
+  }
+  &-title {
+    font-size: 24pt;
+    font-weight: 700;
+    color: black;
+  }
+}

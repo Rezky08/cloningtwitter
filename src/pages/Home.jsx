@@ -36,7 +36,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className="tw-home">
-        <Header />
+        <Header isHome />
 
         <div>
           {this.state.tweets.map((value, index) => {
