@@ -1,0 +1,52 @@
+$transitionTime: 0.2s;
+.tw-input {
+  height: 3rem;
+  border: $hairline;
+  position: relative;
+  padding: 0.1rem 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+
+  &-placeholder {
+    &--container {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      transition: all $transitionTime;
+    }
+    &--text {
+      font-size: $font-size-normal;
+      color: $secondary-dark;
+      transition: all $transitionTime;
+    }
+  }
+  &.focus {
+    .tw-input {
+      &-placeholder {
+        &--container {
+          height: fit-content;
+          transition: all $transitionTime;
+        }
+        &--text {
+          font-size: $font-size-small;
+          transition: all $transitionTime;
+        }
+      }
+    }
+    input {
+      display: block;
+    }
+  }
+  input {
+    display: none;
+    border: none;
+    font-size: $font-size-normal;
+    width: 100%;
+    height: 100%;
+    &:focus-visible {
+      outline: none;
+    }
+  }
+}

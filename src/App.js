@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "@/pages/Home";
 import ComposeTweet from "@/pages/ComposeTweet";
 import Login from "@/pages/Login";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -14,9 +15,12 @@ function App() {
           <Route path="/compose">
             <ComposeTweet />
           </Route>
-          <Route path="/">
+          <PrivateRoute path="/">
             <Home />
-          </Route>
+          </PrivateRoute>
+          {/* <Route path="/">
+            <Home />
+          </Route> */}
         </Switch>
       </div>
     </Router>

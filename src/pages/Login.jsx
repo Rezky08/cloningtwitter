@@ -6,14 +6,24 @@ import { ReactComponent as TwitterIcon } from "@/assets/icons/Twitter.svg";
 import GoBack from "@/components/GoBack";
 import Header from "@/components/layouts/Header";
 import Input from "@/components/Input";
+import Button from "@/components/Button";
+import { login } from "@/functions/Auth.js";
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isAddExistingAccount: props.isAddExistingAccount ?? false,
+      username: props.username ?? null,
+      password: props.password ?? null,
     };
+    this.onSubmit = this.onSubmit.bind(this);
   }
+
+  onSubmit() {
+    login(this.state);
+  }
+
   render() {
     let header;
     let title;
@@ -43,8 +53,31 @@ class Login extends React.Component {
         {header}
         <div className="tw-login-body">
           <div className="tw-login-title">{title}</div>
-          <Input />
-          <Input type="password" />
+          <div className="tw-login-form">
+            <Input
+              placeholder="Phone, email, or username"
+              value={this.state.username}
+              onChange={(value) =>
+                this.setState({ username: value ?? this.state.username })
+              }
+            />
+            <Input
+              placeholder="Password"
+              value={this.state.password}
+              onChange={(value) =>
+                this.setState({ password: value ?? this.state.password })
+              }
+              type="password"
+            />
+            <Button
+              pill
+              size="lg"
+              className="tw-login-form-submit"
+              onClick={this.onSubmit}
+            >
+              <span>Login</span>
+            </Button>
+          </div>
         </div>
       </div>
     );
