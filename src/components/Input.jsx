@@ -11,7 +11,11 @@ class Input extends React.Component {
     this.containerRef = React.createRef();
     this.onInputClicked = this.onInputClicked.bind(this);
     this.onInputBlur = this.onInputBlur.bind(this);
+    this.onInputFocused = this.onInputFocused.bind(this);
     this.onValueChange = this.onValueChange.bind(this);
+  }
+  onInputFocused() {
+    this.containerRef.current.classList.add("focus");
   }
   onInputClicked() {
     this.containerRef.current?.classList.add("focus");
@@ -46,6 +50,7 @@ class Input extends React.Component {
           type={this.state.type}
           ref={this.inputRef}
           onBlur={this.onInputBlur}
+          onFocus={this.onInputFocused}
           onChange={(e) => {
             this.onValueChange(e.target.value);
           }}
