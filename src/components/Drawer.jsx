@@ -8,7 +8,15 @@ class Drawer extends React.Component {
     this.show = this.show.bind(this);
     this.hide = this.hide.bind(this);
     this.drawerRef = React.createRef();
+    this.addClassName = this.addClassName.bind(this);
   }
+
+  addClassName() {
+    if (this.props.className) {
+      this.drawerRef.current.classList.add(this.props.className);
+    }
+  }
+
   show() {
     this.drawerRef.current.classList.add("active");
   }
@@ -17,6 +25,7 @@ class Drawer extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="tw-drawer" ref={this.drawerRef}>
         <span className="tw-drawer-trigger" onClick={this.show}>
@@ -33,7 +42,17 @@ class Drawer extends React.Component {
                 <Icon icon={<CrossIcon />} size="1.2rem" />
               </span>
             </div>
-            <div className="tw-drawer-content-body">{this.props.children}</div>
+            <div className="tw-drawer-content-body">
+              {this.props.children?.length > 1
+                ? this.props.children.map((child, index) => {
+                    return (
+                      <div className="tw-drawer-content-item" key={index}>
+                        {child}
+                      </div>
+                    );
+                  })
+                : this.props.children}
+            </div>
           </div>
         </div>
       </div>
