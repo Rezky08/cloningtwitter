@@ -4,7 +4,7 @@ import Button from "@/components/Button";
 import Avatar from "@/components/Avatar";
 import { ReactComponent as ArrowLeftIcon } from "@/assets/icons/ArrowLeft.svg";
 import Textarea from "@/components/Textarea";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import ComposeTweetSetting from "@/components/compose_tweets/ComposeTweetSetting";
 import API from "@/functions/apis";
 
@@ -58,7 +58,7 @@ class ComposeTweet extends React.Component {
   }
   onSubmit() {
     API.post("/tweet", this.state).then(({ data }) => {
-      console.log(data);
+      this.props.history.push("/");
     });
   }
   render() {
@@ -94,4 +94,4 @@ class ComposeTweet extends React.Component {
     );
   }
 }
-export default ComposeTweet;
+export default withRouter(ComposeTweet);
