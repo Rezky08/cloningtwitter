@@ -16,11 +16,13 @@ class Home extends React.Component {
 
   componentDidMount() {
     console.log(localStorage.getItem("authorization"));
-    API.get("/tweet").then(({ data }) => {
-      this.setState({
-        tweets: data?.data,
-      });
-    });
+    API.get("/tweet")
+      .then(({ data }) => {
+        this.setState({
+          tweets: data?.data,
+        });
+      })
+      .catch(() => {});
   }
   // componentDidUpdate() {
   //   API.get("/tweet").then(({ data }) => {

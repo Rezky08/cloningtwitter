@@ -4,4 +4,7 @@
   svg {
     fill: currentColor !important;
   }
+  &-clickable {
+    cursor: pointer;
+  }
 }
