@@ -8,6 +8,9 @@ import Header from "@/components/layouts/Header";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 import { login } from "@/functions/Auth.js";
+import AuthContext from "../components/AuthContext";
+import { Route, Redirect } from "react-router-dom";
+import { getMe } from "../functions/Auth";
 
 class Login extends React.Component {
   constructor(props) {
@@ -20,8 +23,16 @@ class Login extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onSubmit() {
-    login(this.state);
+  onSubmit(setUserCallback = () => {}) {
+    login(this.state).then((data) => {
+      console.log(data);
+      if (localStorage.getItem("authorization")) {
+        getMe().then((user) => {
+          setUserCallback(user);
+        });
+      }
+    });
+    // getMe();
   }
 
   render() {
@@ -53,31 +64,50 @@ class Login extends React.Component {
         {header}
         <div className="tw-login-body">
           <div className="tw-login-title">{title}</div>
-          <div className="tw-login-form">
-            <Input
-              placeholder="Phone, email, or username"
-              value={this.state.username}
-              onChange={(value) =>
-                this.setState({ username: value ?? this.state.username })
-              }
-            />
-            <Input
-              placeholder="Password"
-              value={this.state.password}
-              onChange={(value) =>
-                this.setState({ password: value ?? this.state.password })
-              }
-              type="password"
-            />
-            <Button
-              pill
-              size="lg"
-              className="tw-login-form-submit"
-              onClick={this.onSubmit}
-            >
-              <span>Login</span>
-            </Button>
-          </div>
+          <AuthContext.Consumer>
+            {({ user, setUser }) => {
+              return user ? (
+                <Route
+                  render={({ location }) => (
+                    <Redirect
+                      to={{
+                        pathname: "/",
+                        state: { from: location },
+                      }}
+                    />
+                  )}
+                />
+              ) : (
+                <div className="tw-login-form">
+                  <Input
+                    placeholder="Phone, email, or username"
+                    value={this.state.username}
+                    onChange={(value) =>
+                      this.setState({ username: value ?? this.state.username })
+                    }
+                  />
+                  <Input
+                    placeholder="Password"
+                    value={this.state.password}
+                    onChange={(value) =>
+                      this.setState({ password: value ?? this.state.password })
+                    }
+                    type="password"
+                  />
+                  <Button
+                    pill
+                    size="lg"
+                    className="tw-login-form-submit"
+                    onClick={() => {
+                      this.onSubmit(setUser);
+                    }}
+                  >
+                    <span>Login</span>
+                  </Button>
+                </div>
+              );
+            }}
+          </AuthContext.Consumer>
         </div>
       </div>
     );
