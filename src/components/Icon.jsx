@@ -6,10 +6,18 @@ class Icon extends React.Component {
     this.state = {
       size: props.size ?? "1.5rem",
     };
+    this.iconRef = React.createRef();
+    this.setClickable = this.setClickable.bind(this);
+  }
+  setClickable() {
+    this.iconRef.current.classList.add("tw-icon-clickable");
+  }
+  componentDidMount() {
+    this.setClickable();
   }
   render() {
     return (
-      <span className="tw-icon">
+      <span className="tw-icon" ref={this.iconRef}>
         {React.cloneElement(this.props.icon, {
           height: this.state.size,
           width: this.state.size,

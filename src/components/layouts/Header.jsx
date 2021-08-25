@@ -2,7 +2,7 @@ import React from "react";
 import Icon from "@/components/Icon";
 import { ReactComponent as TwitterIcon } from "@/assets/icons/Twitter.svg";
 import { ReactComponent as SparkIcon } from "@/assets/icons/Spark.svg";
-import Avatar from "@/components/Avatar";
+import AccountDrawer from "@/components/AccountDrawer";
 
 // import Fleet from "@/components/Fleet";
 // import FleetItem from "@/components/FleetItem";
@@ -46,9 +46,7 @@ class Header extends React.Component {
     if (this.state.isHome) {
       header = (
         <div className="tw-header home">
-          <span className="tw-collapse-icon">
-            <Avatar sm />
-          </span>
+          <AccountDrawer />
           <div className="tw-brand">
             <Icon icon={<TwitterIcon />} />
           </div>
