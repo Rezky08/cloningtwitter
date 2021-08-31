@@ -31,7 +31,7 @@ class Button extends React.Component {
 
   addClassName() {
     if (this.props.className) {
-      this.ButtonRef.current.classList.add(this.props.className);
+      this.ButtonRef.current.classList.add(...this.props.className.split(" "));
     }
     this.addCircleClass();
     this.addPillClass();

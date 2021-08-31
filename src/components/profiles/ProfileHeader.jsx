@@ -1,6 +1,7 @@
 import React from "react";
 import Avatar from "@/components/Avatar";
 import Button from "@/components/Button";
+import AuthContext from "../AuthContext";
 
 class ProfileHeader extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class ProfileHeader extends React.Component {
     this.state = {
       displayName: "Rezky Setiawan",
       userName: "rezky.setiawn85",
+      following: true,
     };
   }
   render() {
@@ -20,9 +22,34 @@ class ProfileHeader extends React.Component {
               <Avatar xxl />
             </div>
             <div className="">
-              <Button pill className="tw-profile--button-edit">
-                Edit profile
-              </Button>
+              <AuthContext.Consumer>
+                {({ user }) => {
+                  if (user?.name === this.state.userName) {
+                    return (
+                      <Button pill className="tw-profile--button edit">
+                        Edit profile
+                      </Button>
+                    );
+                  } else {
+                    if (this.state.following) {
+                      return (
+                        <Button
+                          pill
+                          className="tw-profile--button follow following"
+                        >
+                          Following
+                        </Button>
+                      );
+                    } else {
+                      return (
+                        <Button pill className="tw-profile--button follow">
+                          Follow
+                        </Button>
+                      );
+                    }
+                  }
+                }}
+              </AuthContext.Consumer>
             </div>
           </div>
           <div className="tw-profile-header--name-container">
