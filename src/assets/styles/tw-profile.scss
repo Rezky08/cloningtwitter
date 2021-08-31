@@ -118,4 +118,9 @@
       }
     }
   }
+  &-timeline {
+    & > :nth-last-child(1) {
+      padding-bottom: $navigation-height;
+    }
+  }
 }

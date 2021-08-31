@@ -44,16 +44,13 @@ class ProfileNavigation extends React.Component {
       <DragToScroll>
         <div className="tw-profile-navigation" ref={this.profileNavigationRef}>
           <div className="tw-profile-navigation--container">
-            <ProfileNavigationItem>Test</ProfileNavigationItem>
-            <ProfileNavigationItem>Lorem, ipsum</ProfileNavigationItem>
-            <ProfileNavigationItem>Test</ProfileNavigationItem>
-            <ProfileNavigationItem>Test</ProfileNavigationItem>
-            <ProfileNavigationItem>Test</ProfileNavigationItem>
-            <ProfileNavigationItem>Test</ProfileNavigationItem>
-            <ProfileNavigationItem>Test</ProfileNavigationItem>
-            <ProfileNavigationItem>Test</ProfileNavigationItem>
-            <ProfileNavigationItem>Test</ProfileNavigationItem>
-            <ProfileNavigationItem>Test</ProfileNavigationItem>
+            {[...Array(10)].map((value, index) => {
+              return (
+                <ProfileNavigationItem key={index}>
+                  Test {index}
+                </ProfileNavigationItem>
+              );
+            })}
           </div>
         </div>
       </DragToScroll>
