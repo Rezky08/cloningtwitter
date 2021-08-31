@@ -4,7 +4,7 @@ class DragToScroll extends React.Component {
   constructor(props) {
     super(props);
     const directions = ["x", "y", "all"];
-    this.dragToScrollContainer = React.createRef();
+    this.dragToScrollContainer = props.children?.ref ?? React.createRef();
     this.state = {
       direction: directions.includes(props.direction) ? props.direction : "all",
       directions: directions,
@@ -56,7 +56,7 @@ class DragToScroll extends React.Component {
             this.state !== "all" ? `scroll-${this.state.direction}` : null,
             this.props.children?.props?.className,
           ].join(" "),
-          ref: this.dragToScrollContainer,
+          ref: this.props.children.ref ?? this.dragToScrollContainer,
         })}
       </div>
     );

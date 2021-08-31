@@ -1,0 +1,121 @@
+.tw-profile {
+  &--button {
+    &-edit {
+      background-color: transparent;
+      border: 0.5px solid $secondary-dark;
+      color: $dark;
+      font-size: medium;
+      font-weight: 600;
+    }
+  }
+  &-title {
+    display: flex;
+    flex-direction: column;
+    &--tweet-count {
+      font-size: small;
+      font-weight: normal;
+      color: $secondary-dark;
+    }
+  }
+  &-header {
+    &-container {
+      padding: 0 $padding-left-right;
+    }
+    &--name {
+      &-container {
+        display: flex;
+        flex-direction: column;
+      }
+      &-display {
+        font-size: large;
+        font-weight: 700;
+        color: $dark;
+      }
+      &-user {
+        color: $secondary-dark;
+      }
+    }
+    &--avatar-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: -0.7rem;
+    }
+    &--image {
+      min-height: 7rem;
+      width: 100%;
+      background-color: $secondary;
+    }
+  }
+  &-detail {
+    display: flex;
+    flex-direction: column;
+    padding: 0 $padding-left-right;
+    gap: 1rem;
+    &--extra {
+      &-container {
+        display: flex;
+        flex-direction: column;
+        color: $secondary-dark;
+        & > * {
+          display: flex;
+          flex-direction: row;
+          gap: 0.5rem;
+        }
+      }
+    }
+    &--follow {
+      &-count {
+        font-weight: 500;
+        color: $dark;
+      }
+      &-container {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+
+        & > * {
+          display: flex;
+          flex-direction: row;
+          gap: 0.1rem;
+          font-size: medium;
+          color: $secondary-dark;
+        }
+      }
+    }
+  }
+  &-navigation {
+    &--container {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+    }
+    &--item {
+      min-height: 2rem;
+      padding: 0 1rem;
+      color: $secondary-dark;
+      font-weight: 500;
+      & > * {
+        padding: 1rem 0;
+        position: relative;
+        width: max-content;
+      }
+      &.active {
+        color: $dark;
+        & > * {
+          &::before {
+            content: "";
+            position: absolute;
+            background-color: $primary;
+            border-radius: 1rem;
+            height: 0.25rem;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+}

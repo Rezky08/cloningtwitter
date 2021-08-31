@@ -2,7 +2,9 @@ import React from "react";
 import Icon from "@/components/Icon";
 import { ReactComponent as TwitterIcon } from "@/assets/icons/Twitter.svg";
 import { ReactComponent as SparkIcon } from "@/assets/icons/Spark.svg";
+import { ReactComponent as ArrowLeftIcon } from "@/assets/icons/ArrowLeft.svg";
 import AccountDrawer from "@/components/AccountDrawer";
+import GoBack from "@/components/GoBack";
 
 // import Fleet from "@/components/Fleet";
 // import FleetItem from "@/components/FleetItem";
@@ -58,9 +60,15 @@ class Header extends React.Component {
     } else {
       header = (
         <div className="tw-header">
-          {this.props.left ? (
+          {this.props.left || this.props.title ? (
             <div className="tw-header--left">
-              <div className="tw-header--left-action">{this.props.left}</div>
+              <div className="tw-header--left-action">
+                {this.props.left ?? (
+                  <GoBack>
+                    <Icon icon={<ArrowLeftIcon />} size="1.4rem" />
+                  </GoBack>
+                )}
+              </div>
               <div className="tw-header--left-title">{this.props.title}</div>
             </div>
           ) : null}

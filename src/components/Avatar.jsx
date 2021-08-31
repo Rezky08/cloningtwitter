@@ -10,7 +10,7 @@ class Avatar extends React.Component {
     this.addSizeClassName();
   }
   addSizeClassName() {
-    const availableSize = ["sm", "lg"];
+    const availableSize = ["sm", "lg", "xl", "xxl"];
     const sizeClassName = Object.keys(this.props).filter((o) =>
       availableSize.includes(o)
     );

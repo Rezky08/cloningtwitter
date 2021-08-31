@@ -14,10 +14,10 @@ class AccountDrawer extends React.Component {
           </span>
         }
       >
-        {[...Array(10)].map((value) => {
+        {[...Array(10)].map((value, index) => {
           return (
-            <span className="tw-account-drawer-item" key={value}>
-              value
+            <span className="tw-account-drawer-item" key={index}>
+              {index}
             </span>
           );
         })}
