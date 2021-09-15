@@ -1,0 +1,25 @@
+.tw-search {
+  input {
+    width: 100%;
+    height: $font-size-medium;
+    font-size: $font-size-normal;
+    border-radius: 1rem;
+    border: $hairline;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: $secondary;
+    &:focus-visible {
+      outline: none;
+    }
+  }
+  &-header {
+    display: flex;
+    gap: 1rem;
+  }
+  .tw-header {
+    justify-content: end;
+    &--right {
+      width: 90%;
+    }
+  }
+}

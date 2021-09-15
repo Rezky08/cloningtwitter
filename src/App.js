@@ -3,8 +3,9 @@ import Home from "@/pages/Home";
 import ComposeTweet from "@/pages/ComposeTweet";
 import Login from "@/pages/Login";
 import Profile from "@/pages/Profile";
-import PrivateRoute from "./components/PrivateRoute";
-import RequireAuth from "./components/RequireAuth";
+import Search from "@/pages/Search";
+import PrivateRoute from "@/components/PrivateRoute";
+import RequireAuth from "@/components/RequireAuth";
 
 function App() {
   return (
@@ -12,6 +13,9 @@ function App() {
       <Router>
         <div className="App">
           <Switch>
+            <Route path="/search">
+              <Search />
+            </Route>
             <Route path="/login">
               <Login />
             </Route>
