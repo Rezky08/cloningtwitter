@@ -12,6 +12,7 @@ class DefaultLayout extends React.Component {
           left={this.props.left}
           right={this.props.right}
           title={this.props.title}
+          borderless={this.props.borderless}
         />
         <div>{this.props.children}</div>
 

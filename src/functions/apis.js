@@ -4,6 +4,6 @@ const baseURL = "https://cloningtwitterapi.herokuapp.com/";
 export default axios.create({
   baseURL: baseURL,
   headers: {
-    Authorization: `Bearer ${localStorage.getItem("authorization")}`,
+    Authorization: `Bearer ${sessionStorage.getItem("authorization")}`,
   },
 });

@@ -16,6 +16,33 @@
     display: flex;
     gap: 1rem;
   }
+  &-result {
+    &--users {
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    &--user {
+      &-item {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        &-detail {
+          display: flex;
+          flex-direction: column;
+
+          .description {
+            width: 16rem;
+            margin: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+    }
+  }
   .tw-header {
     justify-content: end;
     &--right {

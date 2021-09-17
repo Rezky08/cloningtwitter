@@ -29,6 +29,7 @@ function NavigationItem(props) {
     </Link>
   );
 }
+
 class Navigation extends React.Component {
   render() {
     return (

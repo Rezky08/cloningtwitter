@@ -13,15 +13,15 @@ function App() {
       <Router>
         <div className="App">
           <Switch>
-            <Route path="/search">
+            <PrivateRoute path="/search">
               <Search />
-            </Route>
+            </PrivateRoute>
             <Route path="/login">
               <Login />
             </Route>
-            <Route path="/compose">
+            <PrivateRoute path="/compose">
               <ComposeTweet />
-            </Route>
+            </PrivateRoute>
             <Route path="/:username">
               <Profile />
             </Route>

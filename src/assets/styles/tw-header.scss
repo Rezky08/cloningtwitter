@@ -4,6 +4,9 @@
   align-items: center;
   padding: 0.7rem;
   border-bottom: $hairline;
+  &.borderless {
+    border-bottom: none;
+  }
   &.home {
     color: $primary;
     border-bottom: none;

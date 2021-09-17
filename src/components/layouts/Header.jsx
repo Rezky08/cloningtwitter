@@ -59,7 +59,12 @@ class Header extends React.Component {
       );
     } else {
       header = (
-        <div className="tw-header">
+        <div
+          className={[
+            "tw-header",
+            this.props.borderless ? "borderless" : "",
+          ].join(" ")}
+        >
           {this.props.left || this.props.title ? (
             <div className="tw-header--left">
               <div className="tw-header--left-action">

@@ -4,8 +4,10 @@ const login = async (params) => {
   return API.post("/auth/login", params)
     .then(({ data }) => {
       const { token } = data.data;
-      localStorage.setItem("authorization", token);
-      console.log(localStorage.getItem("authorization"));
+      sessionStorage.setItem("authorization", token);
+      API.defaults.headers["Authorization"] = `Bearer ${sessionStorage.getItem(
+        "authorization"
+      )}`;
       return token;
     })
     .catch((e) => {
@@ -14,18 +16,14 @@ const login = async (params) => {
 };
 
 const getMe = async () => {
-  return API.get("/auth/me", {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("authorization")}`,
-    },
-  })
+  return API.get("/auth/me")
     .then(({ data }) => {
       localStorage.setItem("user", JSON.stringify(data?.data));
       return data;
     })
     .catch(() => {
       localStorage.removeItem("user");
-      localStorage.removeItem("authorization");
+      sessionStorage.removeItem("authorization");
     });
 };
 
