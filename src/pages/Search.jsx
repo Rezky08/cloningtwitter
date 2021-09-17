@@ -4,30 +4,41 @@ import Icon from "@/components/Icon";
 import Avatar from "@/components/Avatar";
 import { ReactComponent as SettingIcon } from "@/assets/icons/Settings.svg";
 import API from "@/functions/apis";
+import { Link } from "react-router-dom";
 
 function SearchResultUser(props) {
   return (
-    <div className="tw-search-result--user-item">
-      <div className="tw-search-result--user-item-profile-picture">
-        <Avatar />
+    <Link to={`/${props?.username}`}>
+      <div className="tw-search-result--user-item">
+        <div className="tw-search-result--user-item-profile-picture">
+          <Avatar />
+        </div>
+        <div className="tw-search-result--user-item-detail">
+          <span className="display-name">{props.name}</span>
+          <span className="username">@{props.username}</span>
+          <p className="description">{props.description}</p>
+        </div>
       </div>
-      <div className="tw-search-result--user-item-detail">
-        <span className="display-name">{props.name}</span>
-        <span className="username">@{props.username}</span>
-        <p className="description">{props.description}</p>
-      </div>
-    </div>
+    </Link>
   );
 }
 class Search extends React.Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      users: [],
+    };
     this.onSearchChange = this.onSearchChange.bind(this);
   }
 
   onSearchChange(value) {
-    console.log(value);
+    API.get("/search", {
+      params: {
+        q: value,
+      },
+    }).then(({ data }) => {
+      this.setState({ users: data.data });
+    });
   }
   render() {
     return (
@@ -47,13 +58,13 @@ class Search extends React.Component {
           borderless
         >
           <div className="tw-search-result--users">
-            {[...Array(10)].map((value, index) => {
+            {this.state.users.map((user, index) => {
               return (
                 <SearchResultUser
                   key={index}
-                  username="rezky.setiawan85"
-                  name="Rezky Setiawan"
-                  description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit ab hic quis est laborum et animi delectus, in necessitatibus recusandae similique commodi ea tempore, minima, voluptates vitae asperiores dolor aliquid."
+                  username={user.username}
+                  name={user.username}
+                  description={user.description}
                 />
               );
             })}
