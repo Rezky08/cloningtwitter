@@ -9,8 +9,8 @@ import RequireAuth from "@/components/RequireAuth";
 
 function App() {
   return (
-    <RequireAuth>
-      <Router>
+    <Router>
+      <RequireAuth>
         <div className="App">
           <Switch>
             <PrivateRoute path="/search">
@@ -33,8 +33,8 @@ function App() {
           </Route> */}
           </Switch>
         </div>
-      </Router>
-    </RequireAuth>
+      </RequireAuth>
+    </Router>
   );
 }
 

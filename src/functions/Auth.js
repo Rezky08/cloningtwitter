@@ -4,8 +4,8 @@ const login = async (params) => {
   return API.post("/auth/login", params)
     .then(({ data }) => {
       const { token } = data.data;
-      sessionStorage.setItem("authorization", token);
-      API.defaults.headers["Authorization"] = `Bearer ${sessionStorage.getItem(
+      localStorage.setItem("authorization", token);
+      API.defaults.headers["Authorization"] = `Bearer ${localStorage.getItem(
         "authorization"
       )}`;
       return token;
@@ -22,8 +22,11 @@ const getMe = async () => {
       return data;
     })
     .catch(() => {
+      if (window.location.pathname !== "/login") {
+        window.location.href = "/login";
+      }
       localStorage.removeItem("user");
-      sessionStorage.removeItem("authorization");
+      localStorage.removeItem("authorization");
     });
 };
 

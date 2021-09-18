@@ -25,7 +25,6 @@ class Drawer extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="tw-drawer" ref={this.drawerRef}>
         <span className="tw-drawer-trigger" onClick={this.show}>

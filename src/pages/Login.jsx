@@ -25,9 +25,10 @@ class Login extends React.Component {
 
   onSubmit(setUserCallback = () => {}) {
     login(this.state).then((data) => {
-      if (sessionStorage.getItem("authorization")) {
+      if (localStorage.getItem("authorization")) {
         getMe().then((user) => {
           setUserCallback(user);
+          window.location.href = "/";
         });
       }
     });

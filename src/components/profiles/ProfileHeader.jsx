@@ -3,16 +3,36 @@ import Avatar from "@/components/Avatar";
 import Button from "@/components/Button";
 import AuthContext from "../AuthContext";
 import UserContext from "../UserContext";
+import API from "@/functions/apis";
+import { withRouter } from "react-router";
 
 class ProfileHeader extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      displayName: "Rezky Setiawan",
-      userName: "rezky.setiawn85",
+      displayname: "Rezky Setiawan",
+      username: "rezky.setiawn85",
       following: true,
     };
+    this.followUser = this.followUser.bind(this);
+    this.unfollowUser = this.unfollowUser.bind(this);
+    this.editProfile = this.editProfile.bind(this);
   }
+
+  followUser(username) {
+    API.post(`/follow/${username}`).then(() => {
+      this.setState({ following: true });
+    });
+  }
+  unfollowUser(username) {
+    API.post(`/unfollow/${username}`).then(() => {
+      this.setState({ following: true });
+    });
+  }
+  editProfile() {
+    this.props.history.push("/profile/edit");
+  }
+
   render() {
     return (
       <UserContext.Consumer>
@@ -30,16 +50,23 @@ class ProfileHeader extends React.Component {
                       {({ user }) => {
                         if (user?.username === userProfile.username) {
                           return (
-                            <Button pill className="tw-profile--button edit">
+                            <Button
+                              pill
+                              className="tw-profile--button edit"
+                              onClick={this.editProfile}
+                            >
                               Edit profile
                             </Button>
                           );
                         } else {
-                          if (this.state.following) {
+                          if (userProfile.followed) {
                             return (
                               <Button
                                 pill
                                 className="tw-profile--button follow following"
+                                onClick={() =>
+                                  this.unfollowUser(userProfile.username)
+                                }
                               >
                                 Following
                               </Button>
@@ -49,6 +76,9 @@ class ProfileHeader extends React.Component {
                               <Button
                                 pill
                                 className="tw-profile--button follow"
+                                onClick={() =>
+                                  this.followUser(userProfile.username)
+                                }
                               >
                                 Follow
                               </Button>
@@ -76,4 +106,4 @@ class ProfileHeader extends React.Component {
   }
 }
 
-export default ProfileHeader;
+export default withRouter(ProfileHeader);
