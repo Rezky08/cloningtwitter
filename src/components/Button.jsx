@@ -13,6 +13,8 @@ class Button extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    this.addClassName();
+    console.log(this.ButtonRef?.current.classList);
     this.setDisabledAttribute();
   }
 
@@ -30,8 +32,14 @@ class Button extends React.Component {
   }
 
   addClassName() {
+    this.ButtonRef?.current?.setAttribute("class", "");
+    this.ButtonRef?.current?.classList?.add("tw-button");
     if (this.props.className) {
-      this.ButtonRef.current.classList.add(...this.props.className.split(" "));
+      this.ButtonRef?.current?.classList?.add(
+        ...this.props?.className
+          ?.split(" ")
+          .filter((className) => className !== "")
+      );
     }
     this.addCircleClass();
     this.addPillClass();
@@ -64,11 +72,7 @@ class Button extends React.Component {
 
   render() {
     return (
-      <button
-        ref={this.ButtonRef}
-        className="tw-button"
-        onClick={this.onClicked}
-      >
+      <button ref={this.ButtonRef} onClick={this.onClicked}>
         {this.props.children}
       </button>
     );

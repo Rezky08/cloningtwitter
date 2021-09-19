@@ -13,7 +13,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    API.get("/tweet")
+    API.get("/timeline")
       .then(({ data }) => {
         this.setState({
           tweets: data?.data,

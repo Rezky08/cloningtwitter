@@ -19,14 +19,16 @@ class ProfileHeader extends React.Component {
     this.editProfile = this.editProfile.bind(this);
   }
 
-  followUser(username) {
+  followUser(username, callback = () => {}) {
     API.post(`/follow/${username}`).then(() => {
       this.setState({ following: true });
+      callback();
     });
   }
-  unfollowUser(username) {
-    API.post(`/unfollow/${username}`).then(() => {
+  unfollowUser(username, callback = () => {}) {
+    API.delete(`/follow/${username}`).then(() => {
       this.setState({ following: true });
+      callback();
     });
   }
   editProfile() {
@@ -48,7 +50,7 @@ class ProfileHeader extends React.Component {
                   <div className="">
                     <AuthContext.Consumer>
                       {({ user }) => {
-                        if (user?.username === userProfile.username) {
+                        if (user?.username === userProfile?.username) {
                           return (
                             <Button
                               pill
@@ -59,31 +61,28 @@ class ProfileHeader extends React.Component {
                             </Button>
                           );
                         } else {
-                          if (userProfile.followed) {
-                            return (
-                              <Button
-                                pill
-                                className="tw-profile--button follow following"
-                                onClick={() =>
-                                  this.unfollowUser(userProfile.username)
-                                }
-                              >
-                                Following
-                              </Button>
-                            );
-                          } else {
-                            return (
-                              <Button
-                                pill
-                                className="tw-profile--button follow"
-                                onClick={() =>
-                                  this.followUser(userProfile.username)
-                                }
-                              >
-                                Follow
-                              </Button>
-                            );
-                          }
+                          return (
+                            <Button
+                              pill
+                              className={[
+                                "tw-profile--button follow",
+                                userProfile?.followed ? "following" : null,
+                              ].join(" ")}
+                              onClick={() =>
+                                userProfile?.followed
+                                  ? this.unfollowUser(
+                                      userProfile?.username,
+                                      userProfile.getProfile
+                                    )
+                                  : this.followUser(
+                                      userProfile?.username,
+                                      userProfile.getProfile
+                                    )
+                              }
+                            >
+                              {userProfile?.followed ? "Following" : "Follow"}
+                            </Button>
+                          );
                         }
                       }}
                     </AuthContext.Consumer>
@@ -91,10 +90,10 @@ class ProfileHeader extends React.Component {
                 </div>
                 <div className="tw-profile-header--name-container">
                   <span className="tw-profile-header--name-display">
-                    {userProfile.name}
+                    {userProfile?.name}
                   </span>
                   <span className="tw-profile-header--name-user">
-                    @{userProfile.username}
+                    @{userProfile?.username}
                   </span>
                 </div>
               </div>

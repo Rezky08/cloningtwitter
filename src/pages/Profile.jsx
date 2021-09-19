@@ -11,11 +11,16 @@ import UserContext from "../components/UserContext";
 class Profile extends React.Component {
   constructor(props) {
     super(props);
+    this.getProfile = this.getProfile.bind(this);
     this.state = {
       username: this.props?.match?.params?.username ?? null,
+      getProfile: this.getProfile,
     };
   }
   componentDidMount() {
+    this.getProfile();
+  }
+  getProfile() {
     API.get(`/user/${this.state.username}`).then(({ data }) => {
       this.setState({ ...data.data });
     });
