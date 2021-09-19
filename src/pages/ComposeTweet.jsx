@@ -7,6 +7,7 @@ import Textarea from "@/components/Textarea";
 import { Link, withRouter } from "react-router-dom";
 import ComposeTweetSetting from "@/components/compose_tweets/ComposeTweetSetting";
 import API from "@/functions/apis";
+import ReplyToTweet from "../components/compose_tweets/ReplyToTweet";
 
 class ComposeTweet extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class ComposeTweet extends React.Component {
       text: null,
       submit: false,
       replyPermission: null,
+      reply: props.reply ?? true,
     };
     this.validation = {
       text: {
@@ -77,6 +79,7 @@ class ComposeTweet extends React.Component {
             <span>Tweet</span>
           </Button>
         </div>
+        {this.state.reply ? <ReplyToTweet></ReplyToTweet> : null}
         <div className="tw-compose-tweet-fill-content">
           <div className="tw-compose-tweet-fill-content--profile">
             <Avatar />

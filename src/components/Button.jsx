@@ -14,7 +14,6 @@ class Button extends React.Component {
 
   componentDidUpdate(prevProps) {
     this.addClassName();
-    console.log(this.ButtonRef?.current.classList);
     this.setDisabledAttribute();
   }
 
