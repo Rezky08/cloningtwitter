@@ -59,9 +59,15 @@ class ComposeTweet extends React.Component {
     this.setState({ ...this.state, ...settings });
   }
   onSubmit() {
-    API.post("/tweet", this.state).then(({ data }) => {
-      this.props.history.push("/");
-    });
+    const tweetEndpoint = "/tweet";
+    const replyEndpoint = `/tweet/reply/${new URLSearchParams(
+      this.props.location.search
+    ).get("tweetId")}`;
+    API.post(this.state.reply ? replyEndpoint : tweetEndpoint, this.state).then(
+      ({ data }) => {
+        this.props.history.push("/");
+      }
+    );
   }
   render() {
     return (

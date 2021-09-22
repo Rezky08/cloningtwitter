@@ -8,7 +8,7 @@ class Input extends React.Component {
       value: props.value ?? null,
     };
     this.inputRef = React.createRef();
-    this.containerRef = React.createRef();
+    this.containerRef = props.ref ?? React.createRef();
     this.onInputClicked = this.onInputClicked.bind(this);
     this.onInputBlur = this.onInputBlur.bind(this);
     this.onInputFocused = this.onInputFocused.bind(this);

@@ -9,13 +9,18 @@ class Tweet extends React.Component {
     super(props);
     this.state = {
       timeDiff: moment(this.props.created_at).fromNow(true),
+      footer: props.footer ?? true,
     };
   }
+
   render() {
     return (
       <div className="tw-tweet">
         <div className="tw-tweet-profile">
           <Avatar />
+          {this.props.hasReply ? (
+            <div className="tw-tweet-has-reply"></div>
+          ) : null}
         </div>
         <div className="tw-tweet-content">
           <div className="tw-tweet-header">
@@ -32,7 +37,7 @@ class Tweet extends React.Component {
           <div className="tw-tweet-fill-content">
             <p>{this.props.text}</p>
           </div>
-          <TweetFooter />
+          {this.state.footer ? <TweetFooter {...this.props} /> : null}
         </div>
       </div>
     );

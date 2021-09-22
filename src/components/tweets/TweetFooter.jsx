@@ -5,6 +5,7 @@ import { ReactComponent as RetweetIcon } from "@/assets/icons/Retweet.svg";
 import { ReactComponent as LikeIcon } from "@/assets/icons/Like.svg";
 import { ReactComponent as ShareIcon } from "@/assets/icons/Share2.svg";
 import Icon from "@/components/Icon";
+import { Link } from "react-router-dom";
 
 class TweetFooter extends React.Component {
   constructor(props) {
@@ -13,13 +14,16 @@ class TweetFooter extends React.Component {
       iconSize: "1rem",
     };
   }
+
   render() {
     return (
       <div className="tw-tweet-footer">
-        <div className="tw-tweet-footer-item">
-          <Icon icon={<CommentIcon />} size={this.state.iconSize} />
-          <span className="tw-tweet-footer-item--count">12</span>
-        </div>
+        <Link to={`/reply?tweetId=${this.props._id}`}>
+          <div className="tw-tweet-footer-item">
+            <Icon icon={<CommentIcon />} size={this.state.iconSize} />
+            <span className="tw-tweet-footer-item--count">12</span>
+          </div>
+        </Link>
         <div className="tw-tweet-footer-item">
           <Icon icon={<RetweetIcon />} size={this.state.iconSize} />
           <span className="tw-tweet-footer-item--count">12</span>

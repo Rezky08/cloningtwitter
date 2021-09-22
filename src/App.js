@@ -22,6 +22,9 @@ function App() {
             <PrivateRoute path="/compose">
               <ComposeTweet />
             </PrivateRoute>
+            <PrivateRoute path="/reply">
+              <ComposeTweet reply={true} />
+            </PrivateRoute>
             <Route path="/:username">
               <Profile />
             </Route>

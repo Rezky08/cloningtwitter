@@ -21,6 +21,7 @@ class Login extends React.Component {
       password: props.password ?? null,
     };
     this.onSubmit = this.onSubmit.bind(this);
+    this.passwordInputRef = React.createRef();
   }
 
   onSubmit(setUserCallback = () => {}) {
@@ -33,6 +34,9 @@ class Login extends React.Component {
       }
     });
     // getMe();
+  }
+  componentDidMount() {
+    console.log(this.passwordInputRef.current.inputRef);
   }
 
   render() {
@@ -92,6 +96,7 @@ class Login extends React.Component {
                     onChange={(value) =>
                       this.setState({ password: value ?? this.state.password })
                     }
+                    ref={this.passwordInputRef}
                     type="password"
                   />
                   <Button

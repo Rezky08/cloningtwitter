@@ -30,10 +30,29 @@ class Home extends React.Component {
   // }
   render() {
     return (
-      <div className="tw-home">
+      <div className="tw-timeline">
         <DefaultLayout isHome>
           {this.state.tweets.map((value, index) => {
-            return <Tweet key={index} {...value} />;
+            return (
+              <div className="tw-timeline-tweets">
+                <Tweet
+                  key={index}
+                  {...value}
+                  hasReply={value?.replies?.length > 0}
+                />
+                <div className="tw-timeline-tweets-replies">
+                  {value?.replies.map((value, index) => {
+                    return (
+                      <Tweet
+                        key={index}
+                        {...value}
+                        hasReply={value?.replies?.length > 0}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            );
           })}
         </DefaultLayout>
       </div>

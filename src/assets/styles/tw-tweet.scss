@@ -4,16 +4,28 @@ div.tw-tweet:last-child {
 .tw-tweet {
   display: flex;
   gap: 0.5rem;
-  padding: 1rem;
-
+  padding: 0rem 1rem;
+  &-has-reply {
+    position: relative;
+    width: 2px;
+    background-color: $secondary-dark;
+    content: "";
+    display: flex;
+    flex-grow: 1;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4px;
+  }
   &-profile {
     display: flex;
+    flex-direction: column;
   }
   &-content {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 0.1rem;
+    color: $dark;
   }
   &-fill-content {
     text-align: left;
