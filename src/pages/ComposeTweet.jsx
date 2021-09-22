@@ -17,7 +17,7 @@ class ComposeTweet extends React.Component {
       text: null,
       submit: false,
       replyPermission: null,
-      reply: props.reply ?? true,
+      reply: props.reply ?? false,
     };
     this.validation = {
       text: {
