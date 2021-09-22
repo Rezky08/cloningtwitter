@@ -1,9 +1,8 @@
 import axios from "axios";
-// const baseURL = "https://cloningtwitterapi.herokuapp.com/";
-const baseURL = "http://localhost:5000/";
+import env from "react-dotenv";
 
 export default axios.create({
-  baseURL: baseURL,
+  baseURL: env.API_URL,
   headers: {
     Authorization: `Bearer ${localStorage.getItem("authorization")}`,
   },
