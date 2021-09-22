@@ -6,6 +6,7 @@ import Profile from "@/pages/Profile";
 import Search from "@/pages/Search";
 import PrivateRoute from "@/components/PrivateRoute";
 import RequireAuth from "@/components/RequireAuth";
+import Logout from "./pages/Logout";
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
             <PrivateRoute path="/search">
               <Search />
             </PrivateRoute>
+            <Route path="/logout">
+              <Logout />
+            </Route>
             <Route path="/login">
               <Login />
             </Route>
