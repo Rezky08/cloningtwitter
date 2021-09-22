@@ -41,12 +41,12 @@ class Home extends React.Component {
                   hasReply={value?.replies?.length > 0}
                 />
                 <div className="tw-timeline-tweets-replies">
-                  {value?.replies.map((value, index) => {
+                  {value?.replies.map((reply, replyIndex) => {
                     return (
                       <Tweet
-                        key={index}
-                        {...value}
-                        hasReply={value?.replies?.length > 0}
+                        key={replyIndex}
+                        {...reply}
+                        hasReply={value?.replies?.length - 1 > replyIndex}
                       />
                     );
                   })}
