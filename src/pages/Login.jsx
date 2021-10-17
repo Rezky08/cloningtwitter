@@ -35,9 +35,7 @@ class Login extends React.Component {
     });
     // getMe();
   }
-  componentDidMount() {
-    console.log(this.passwordInputRef.current.inputRef);
-  }
+  componentDidMount() {}
 
   render() {
     let header;
@@ -97,6 +95,12 @@ class Login extends React.Component {
                       this.setState({ password: value ?? this.state.password })
                     }
                     ref={this.passwordInputRef}
+                    keyDown={{
+                      key: "Enter",
+                      action: () => {
+                        this.onSubmit(setUser);
+                      },
+                    }}
                     type="password"
                   />
                   <Button

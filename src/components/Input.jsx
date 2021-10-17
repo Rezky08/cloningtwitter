@@ -54,6 +54,11 @@ class Input extends React.Component {
           onChange={(e) => {
             this.onValueChange(e.target.value);
           }}
+          onKeyDown={(e) => {
+            if (e.key === this.props.keyDown?.key) {
+              this.props.keyDown?.action(e);
+            }
+          }}
         />
       </div>
     );
