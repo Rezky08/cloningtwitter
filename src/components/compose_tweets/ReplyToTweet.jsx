@@ -10,15 +10,23 @@ class ReplyToTweet extends React.Component {
       tweetId:
         new URLSearchParams(props.location.search).get("tweetId") ?? null,
     };
+    this.getTweet = this.getTweet.bind(this);
+  }
+
+  componentDidMount() {
+    this.getTweet();
+  }
+
+  getTweet() {
     API.get(`/tweet/${this.state.tweetId}`)
       .then(({ data }) => {
         this.setState({ ...data.data });
       })
       .catch(() => {
-        props.history.push("/");
+        this.props.history.push("/");
       });
   }
-  getTweet() {}
+
   render() {
     return (
       <div className="tw-reply-to-tweet">

@@ -22,10 +22,20 @@ class Tweet extends React.Component {
     this.setState({
       tweet: {
         ...tweet,
-        timeDiff: moment(this.props.created_at).fromNow(true),
+        timeDiff: moment(tweet.created_at).fromNow(true),
         footer: this.props.footer ?? true,
       },
     });
+  }
+
+  componentDidUpdate(props, state) {
+    const { text } = this.props;
+    if (
+      props.text !== text ||
+      Object.keys(this.props).length !== Object.keys(props).length
+    ) {
+      this.setTweet(this.props);
+    }
   }
 
   render() {
