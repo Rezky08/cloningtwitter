@@ -5,6 +5,8 @@
   --tw-secondary-dark: lightslategrey;
   --tw-nav-height: 3rem;
   --tw-dark: rgba(0, 0, 0, 0.8);
+  --tw-danger: #dd2e44;
+  --tw-success: rgb(0, 186, 124);
 }
 
 $navigation-height: 3rem;
@@ -14,6 +16,8 @@ $primary-dark: var(--tw-primary-dark);
 $secondary: var(--tw-secondary);
 $secondary-dark: var(--tw-secondary-dark);
 $dark: var(--tw-dark);
+$danger: var(--tw-danger);
+$success: var(--tw-success);
 
 $padding-left-right: 0.7rem;
 $padding-border: 1.5rem;

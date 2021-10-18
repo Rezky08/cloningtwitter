@@ -61,6 +61,13 @@ div.tw-tweet:last-child {
     display: flex;
     justify-content: space-between;
     &-item {
+      &.like-active {
+        color: $danger;
+      }
+
+      &.retweet-active {
+        color: $success;
+      }
       height: 1.5rem;
       display: flex;
       gap: 0.5rem;
