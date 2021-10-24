@@ -22,6 +22,26 @@ class ProfileNavigation extends React.Component {
     super(props);
     this.profileNavigationRef = React.createRef();
     this.setActiveSelectedItem = this.setActiveSelectedItem.bind(this);
+    this.state = {
+      navigations: [
+        {
+          title: "Tweets",
+          url: "",
+        },
+        {
+          title: "Tweets & Replies",
+          url: "",
+        },
+        {
+          title: "Media",
+          url: "",
+        },
+        {
+          title: "Likes",
+          url: "",
+        },
+      ],
+    };
   }
   componentDidMount() {
     this.setActiveSelectedItem();
@@ -44,10 +64,10 @@ class ProfileNavigation extends React.Component {
       <DragToScroll>
         <div className="tw-profile-navigation" ref={this.profileNavigationRef}>
           <div className="tw-profile-navigation--container">
-            {[...Array(10)].map((value, index) => {
+            {this.state.navigations.map((value, index) => {
               return (
                 <ProfileNavigationItem key={index}>
-                  Test {index}
+                  {value.title}
                 </ProfileNavigationItem>
               );
             })}

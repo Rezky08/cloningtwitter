@@ -5,7 +5,7 @@ import ProfileDetail from "@/components/profiles/ProfileDetail";
 import ProfileHeader from "@/components/profiles/ProfileHeader";
 import ProfileNavigation from "@/components/profiles/ProfileNavigation";
 import ProfileTimeline from "@/components/profiles/ProfileTimeline";
-import API from "@/functions/apis";
+import { getUserProfileRequest } from "@/functions/apiRequests";
 import UserContext from "../components/UserContext";
 
 class Profile extends React.Component {
@@ -21,8 +21,8 @@ class Profile extends React.Component {
     this.getProfile();
   }
   getProfile() {
-    API.get(`/user/${this.state.username}`).then(({ data }) => {
-      this.setState({ ...data.data });
+    getUserProfileRequest(this.state.username).then((data) => {
+      this.setState(data);
     });
   }
   render() {
@@ -42,7 +42,7 @@ class Profile extends React.Component {
             <ProfileHeader />
             <ProfileDetail />
             <ProfileNavigation />
-            <ProfileTimeline />
+            <ProfileTimeline username={this.state.username} />
           </DefaultLayout>
         </UserContext.Provider>
       </div>

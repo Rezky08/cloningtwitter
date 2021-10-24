@@ -1,8 +1,8 @@
 import React from "react";
 
 import Tweet from "@/components/tweets/Tweet";
-import API from "@/functions/apis";
 import DefaultLayout from "../components/layouts/DefaultLayout";
+import { getTimelineRequest } from "../functions/apiRequests";
 
 class Home extends React.Component {
   constructor(props) {
@@ -13,13 +13,11 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    API.get("/timeline")
-      .then(({ data }) => {
-        this.setState({
-          tweets: data?.data,
-        });
-      })
-      .catch(() => {});
+    getTimelineRequest().then((data) => {
+      this.setState({
+        tweets: data,
+      });
+    });
   }
   // componentDidUpdate() {
   //   API.get("/tweet").then(({ data }) => {

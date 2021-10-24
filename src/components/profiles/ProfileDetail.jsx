@@ -4,6 +4,7 @@ import { ReactComponent as LinkIcon } from "@/assets/icons/Link.svg";
 import { ReactComponent as CalendarIcon } from "@/assets/icons/Calendar.svg";
 import { ReactComponent as PinLocationIcon } from "@/assets/icons/PinLocation.svg";
 import UserContext from "../UserContext";
+import moment from "moment";
 
 class ProfileDetail extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class ProfileDetail extends React.Component {
       bio: props.bio ?? null,
       location: props.location ?? "test",
       website: props.website ?? "test",
-      joinedDate: props.joinedDate ?? "test",
+      joineddate: props.joineddate ?? "test",
     };
   }
   render() {
@@ -34,13 +35,17 @@ class ProfileDetail extends React.Component {
                 {user.link ? (
                   <div className="tw-profile-detail--website">
                     <Icon icon={<LinkIcon />} />
-                    <span>{user.link}</span>
+                    <a href={user.link} target="_blank">
+                      {user.link}
+                    </a>
                   </div>
                 ) : null}
-                {user.createdAt ? (
+                {user.joineddate ? (
                   <div className="tw-profile-detail--joined-date">
                     <Icon icon={<CalendarIcon />} />
-                    <span>{user.createdAt}</span>
+                    <span>
+                      Joined {moment(user.joineddate).format("MMMM Y")}
+                    </span>
                   </div>
                 ) : null}
               </div>

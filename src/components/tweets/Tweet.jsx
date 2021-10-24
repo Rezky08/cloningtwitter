@@ -28,6 +28,10 @@ class Tweet extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this.setTweet(this.props);
+  }
+
   componentDidUpdate(props, state) {
     const { text } = this.props;
     if (

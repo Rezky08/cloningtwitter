@@ -3,8 +3,8 @@ import DefaultLayout from "@/components/layouts/DefaultLayout";
 import Icon from "@/components/Icon";
 import Avatar from "@/components/Avatar";
 import { ReactComponent as SettingIcon } from "@/assets/icons/Settings.svg";
-import API from "@/functions/apis";
 import { Link } from "react-router-dom";
+import { searchRequest } from "../functions/apiRequests";
 
 function SearchResultUser(props) {
   return (
@@ -32,12 +32,8 @@ class Search extends React.Component {
   }
 
   onSearchChange(value) {
-    API.get("/search", {
-      params: {
-        q: value,
-      },
-    }).then(({ data }) => {
-      this.setState({ users: data.data });
+    searchRequest(value).then((data) => {
+      this.setState({ users: data });
     });
   }
   render() {

@@ -68,6 +68,9 @@
         display: flex;
         flex-direction: column;
         color: $secondary-dark;
+        flex-direction: row;
+        columns: 2;
+        gap: 1rem;
         & > * {
           display: flex;
           flex-direction: row;
@@ -129,6 +132,9 @@
     }
   }
   &-timeline {
+    & > :nth-child(1) {
+      padding-top: $navigation-height * 0.3;
+    }
     & > :nth-last-child(1) {
       padding-bottom: $navigation-height;
     }
