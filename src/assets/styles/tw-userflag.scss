@@ -1,0 +1,15 @@
+.tw-userflag {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  align-content: center;
+  padding: 0 $padding-border;
+  color: $secondary-dark;
+  font-weight: 700;
+  font-size: $font-size-normal;
+  & > :nth-child(1) {
+    width: 1.5rem;
+    padding-left: 0.5rem;
+  }
+}

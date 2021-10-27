@@ -2,6 +2,7 @@ div.tw-tweet:last-child {
   margin-bottom: $navigation-height;
 }
 .tw-compose-tweet .tw-tweet:last-child {
+  margin-top: $navigation-height * 0.3;
   margin-bottom: unset;
 }
 .tw-tweet {

@@ -42,7 +42,10 @@ class Profile extends React.Component {
             <ProfileHeader />
             <ProfileDetail />
             <ProfileNavigation />
-            <ProfileTimeline username={this.state.username} />
+            <ProfileTimeline
+              username={this.state.username}
+              name={this.state.name}
+            />
           </DefaultLayout>
         </UserContext.Provider>
       </div>
