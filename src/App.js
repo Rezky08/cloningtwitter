@@ -7,6 +7,7 @@ import Search from "@/pages/Search";
 import PrivateRoute from "@/components/PrivateRoute";
 import RequireAuth from "@/components/RequireAuth";
 import Logout from "./pages/Logout";
+import Edit from "./pages/Profile/Edit";
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
             <Route path="/login">
               <Login />
             </Route>
+            <PrivateRoute path="/profile/edit">
+              <Edit />
+            </PrivateRoute>
             <PrivateRoute path="/compose">
               <ComposeTweet />
             </PrivateRoute>
