@@ -5,6 +5,7 @@ import AuthContext from "../AuthContext";
 import UserContext from "../UserContext";
 import API from "@/functions/apis";
 import { withRouter } from "react-router";
+import ProfileOnlyHeader from "@/components/profiles/ProfileOnlyHeader";
 
 class ProfileHeader extends React.Component {
   constructor(props) {
@@ -40,64 +41,118 @@ class ProfileHeader extends React.Component {
       <UserContext.Consumer>
         {(userProfile) => {
           return (
-            <div className="tw-profile-header">
-              <div className="tw-profile-header--image"></div>
-              <div className="tw-profile-header-container">
-                <div className="tw-profile-header--avatar-container">
-                  <div className="tw-profile-header--avatar">
-                    <Avatar xxl />
+            <div className="tw-profile">
+              <ProfileOnlyHeader
+                rightHeader={
+                  <AuthContext.Consumer>
+                    {({ user }) => {
+                      if (user?.username === userProfile?.username) {
+                        return (
+                          <Button
+                            pill
+                            className="tw-profile--button edit"
+                            onClick={this.editProfile}
+                          >
+                            Edit profile
+                          </Button>
+                        );
+                      } else {
+                        return (
+                          <Button
+                            pill
+                            className={[
+                              "tw-profile--button follow",
+                              userProfile?.followed ? "following" : null,
+                            ].join(" ")}
+                            onClick={() =>
+                              userProfile?.followed
+                                ? this.unfollowUser(
+                                    userProfile?.username,
+                                    userProfile.getProfile
+                                  )
+                                : this.followUser(
+                                    userProfile?.username,
+                                    userProfile.getProfile
+                                  )
+                            }
+                          >
+                            {userProfile?.followed ? "Following" : "Follow"}
+                          </Button>
+                        );
+                      }
+                    }}
+                  </AuthContext.Consumer>
+                }
+                bottomHeader={
+                  <div className="tw-profile-header--name-container">
+                    <span className="tw-profile-header--name-display">
+                      {userProfile?.name}
+                    </span>
+                    <span className="tw-profile-header--name-user">
+                      @{userProfile?.username}
+                    </span>
                   </div>
-                  <div className="">
-                    <AuthContext.Consumer>
-                      {({ user }) => {
-                        if (user?.username === userProfile?.username) {
-                          return (
-                            <Button
-                              pill
-                              className="tw-profile--button edit"
-                              onClick={this.editProfile}
-                            >
-                              Edit profile
-                            </Button>
-                          );
-                        } else {
-                          return (
-                            <Button
-                              pill
-                              className={[
-                                "tw-profile--button follow",
-                                userProfile?.followed ? "following" : null,
-                              ].join(" ")}
-                              onClick={() =>
-                                userProfile?.followed
-                                  ? this.unfollowUser(
-                                      userProfile?.username,
-                                      userProfile.getProfile
-                                    )
-                                  : this.followUser(
-                                      userProfile?.username,
-                                      userProfile.getProfile
-                                    )
-                              }
-                            >
-                              {userProfile?.followed ? "Following" : "Follow"}
-                            </Button>
-                          );
-                        }
-                      }}
-                    </AuthContext.Consumer>
-                  </div>
-                </div>
-                <div className="tw-profile-header--name-container">
-                  <span className="tw-profile-header--name-display">
-                    {userProfile?.name}
-                  </span>
-                  <span className="tw-profile-header--name-user">
-                    @{userProfile?.username}
-                  </span>
-                </div>
-              </div>
+                }
+              />
             </div>
+            // <div className="tw-profile-header">
+            //   <div className="tw-profile-header--image"></div>
+            //   <div className="tw-profile-header-container">
+            //     <div className="tw-profile-header--avatar-container">
+            //       <div className="tw-profile-header--avatar">
+            //         <Avatar xxl />
+            //       </div>
+            //       <div className="">
+            // <AuthContext.Consumer>
+            //   {({ user }) => {
+            //     if (user?.username === userProfile?.username) {
+            //       return (
+            //         <Button
+            //           pill
+            //           className="tw-profile--button edit"
+            //           onClick={this.editProfile}
+            //         >
+            //           Edit profile
+            //         </Button>
+            //       );
+            //     } else {
+            //       return (
+            //         <Button
+            //           pill
+            //           className={[
+            //             "tw-profile--button follow",
+            //             userProfile?.followed ? "following" : null,
+            //           ].join(" ")}
+            //           onClick={() =>
+            //             userProfile?.followed
+            //               ? this.unfollowUser(
+            //                   userProfile?.username,
+            //                   userProfile.getProfile
+            //                 )
+            //               : this.followUser(
+            //                   userProfile?.username,
+            //                   userProfile.getProfile
+            //                 )
+            //           }
+            //         >
+            //           {userProfile?.followed ? "Following" : "Follow"}
+            //         </Button>
+            //       );
+            //     }
+            //   }}
+            // </AuthContext.Consumer>
+            //       </div>
+            //     </div>
+            //     <div className="tw-profile-header--name-container">
+            //       <span className="tw-profile-header--name-display">
+            //         {userProfile?.name}
+            //       </span>
+            //       <span className="tw-profile-header--name-user">
+            //         @{userProfile?.username}
+            //       </span>
+            //     </div>
+            //   </div>
+            // </div>
           );
         }}
       </UserContext.Consumer>
