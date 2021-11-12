@@ -4,6 +4,7 @@ import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { getUserProfileRequest } from "@/functions/apiRequests";
 import UserContext from "@/components/UserContext";
 import ProfileOnlyHeader from "@/components/profiles/ProfileOnlyHeader";
+import Input from "@/components/Input";
 
 class Edit extends React.Component {
   constructor(props) {
@@ -30,6 +31,9 @@ class Edit extends React.Component {
             title={<div className="tw-profile-edit-title">Edit Profile</div>}
           >
             <ProfileOnlyHeader />
+            <div className="tw-profile-edit--form">
+              <Input />
+            </div>
           </DefaultLayout>
         </UserContext.Provider>
       </div>

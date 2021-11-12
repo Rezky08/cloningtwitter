@@ -1,5 +1,4 @@
 import React from "react";
-import Avatar from "@/components/Avatar";
 import Button from "@/components/Button";
 import AuthContext from "../AuthContext";
 import UserContext from "../UserContext";
