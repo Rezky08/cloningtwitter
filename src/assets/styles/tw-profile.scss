@@ -139,4 +139,18 @@
       padding-bottom: $navigation-height;
     }
   }
+  &-edit {
+    padding: $padding-left-right;
+    &--form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    &-button {
+      &--submit {
+        padding: 0.5rem 1rem;
+        font-weight: 800;
+      }
+    }
+  }
 }

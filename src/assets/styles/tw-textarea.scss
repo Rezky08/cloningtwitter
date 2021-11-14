@@ -12,4 +12,7 @@
   height: auto;
   outline: none;
   text-align: left;
+  &.bordered {
+    border: $hairline;
+  }
 }

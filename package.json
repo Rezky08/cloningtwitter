@@ -41,10 +41,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {},
-  "react-dotenv": {
-    "whitelist": [
-      "API_URL"
-    ]
-  }
+  "devDependencies": {}
 }

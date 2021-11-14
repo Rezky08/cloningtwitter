@@ -5,7 +5,7 @@ class Input extends React.Component {
     super(props);
     this.state = {
       type: props.type ?? "text",
-      value: props.value ?? null,
+      value: props.value ?? "",
     };
     this.inputRef = React.createRef();
     this.containerRef = props.ref ?? React.createRef();
@@ -13,6 +13,15 @@ class Input extends React.Component {
     this.onInputBlur = this.onInputBlur.bind(this);
     this.onInputFocused = this.onInputFocused.bind(this);
     this.onValueChange = this.onValueChange.bind(this);
+  }
+
+  componentDidUpdate(props) {
+    if (this.props.value !== props.value) {
+      this.setState({ value: this.props.value });
+    }
+    if (this.state.value !== "") {
+      this.onInputFocused();
+    }
   }
   onInputFocused() {
     this.containerRef.current.classList.add("focus");
@@ -59,6 +68,7 @@ class Input extends React.Component {
               this.props.keyDown?.action(e);
             }
           }}
+          value={this.state.value}
         />
       </div>
     );
